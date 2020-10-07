@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 	def new
 		@page = Page.new
 	end
-	
+
 	def create
 		#page_params = params.require(:page).permit(:title, :body, :slug)
 		@page = Page.new(page_params)
@@ -27,6 +27,12 @@ class PagesController < ApplicationController
 		#page_params = params.require(:page).permit(:title, :body, :slug)
 		@page.update(page_params)
 		redirect_to @page
+	end
+	
+	def destroy
+		@page = Page.find(params[:id])
+		@page.destroy
+		redirect_to pages_path
 	end
 	
 	private
