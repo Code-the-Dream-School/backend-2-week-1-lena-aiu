@@ -7,9 +7,12 @@ class PagesController < ApplicationController
 	end
 	
 	def show
-		#set_page
-		#@page = Page.find(params[:id])
+		set_page
+		###@page = Page.find(params[:id])
 		#render text: @page.title	
+	###rescue ActiveRecord::RecordNotFound
+		###flash[:notice] = "We couldn't find that Page."
+		###redirect_to action: :index
 	end
 	
 	def new
@@ -24,6 +27,7 @@ class PagesController < ApplicationController
 	end
 	
 	def edit
+		logger.info("The :page parameter is: #{params[:id]}")
 		set_page
 		#@page = Page.find(params[:id])
 	end
