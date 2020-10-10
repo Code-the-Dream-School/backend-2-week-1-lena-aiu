@@ -17,6 +17,7 @@ class PagesController < ApplicationController
 		begin
 		set_page
 	rescue ActiveRecord::RecordNotFound
+		flash[:notice] = "You see this because, you deleted a Page, not the Post!"
 		redirect_to @page
 		return
 		end
