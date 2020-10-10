@@ -13,12 +13,28 @@
 <div id="comments">
   <h1>Comments</h1>
   <!-- The `comments` method returns an array-like collection, so we can call `each` on it: -->
+  
+ <!--  
   <% @post.comments.each do |comment| %>
-    <div>
+	<%= render partial: "comments/comment", locals: {comment: comment} %>
+  --> 
+  
+ <!--   <div>
       <strong><%= comment.name %> says:</strong>
       <%= comment.content %>
     </div>
+ -->
+ 
+ <!-- 
+ 
   <% end %>
+  --> 
+  
+ <!--    <%= render partial: "comments/comment", collection: @post.comments, as: :comment %>   --> 
+ <!--    <%= render partial: "comments/comment", collection: @post.comments %>  --> 
+  
+    <%= render @post.comments %>
+  
 </div>
 <br>
 <%= link_to 'Edit', edit_post_path(@post) %> |
