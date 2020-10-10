@@ -1,18 +1,25 @@
 class PagesController < ApplicationController
-	before_action :set_page, only: [:show, :edit, :update, :destroy]
+	#before_action :set_page, only: [:show, :edit, :update, :destroy]
+	before_action :set_page, only: [:edit, :update, :destroy]
 	#before_action :set_page, except: [:index, :new, :create]
+	rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
+	
 
 	def index
 		@pages = Page.all
 	end
 	
+	def catch_not_found 
+		render text: 'We could not find that Page!'
+	end
+	
 	def show
+		begin
 		set_page
-		###@page = Page.find(params[:id])
-		#render text: @page.title	
-	###rescue ActiveRecord::RecordNotFound
-		###flash[:notice] = "We couldn't find that Page."
-		###redirect_to action: :index
+	rescue ActiveRecord::RecordNotFound
+		redirect_to @page
+		return
+		end
 	end
 	
 	def new
