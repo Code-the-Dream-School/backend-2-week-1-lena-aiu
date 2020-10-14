@@ -11,25 +11,23 @@
 </p>
 
 <div id="comments">
-  <h1>Comments</h1>
-  <!-- The `comments` method returns an array-like collection, so we can call `each` on it: -->
+	<% if @post.comments.present? %>
+		<h1>Comments</h1>
+	<% end %>
   
+ <!-- The `comments` method returns an array-like collection, so we can call `each` on it: -->
  <!--  
   <% @post.comments.each do |comment| %>
 	<%= render partial: "comments/comment", locals: {comment: comment} %>
   --> 
-  
  <!--   <div>
       <strong><%= comment.name %> says:</strong>
       <%= comment.content %>
     </div>
  -->
- 
  <!-- 
- 
   <% end %>
   --> 
-  
  <!--    <%= render partial: "comments/comment", collection: @post.comments, as: :comment %>   --> 
  <!--    <%= render partial: "comments/comment", collection: @post.comments %>  --> 
   
