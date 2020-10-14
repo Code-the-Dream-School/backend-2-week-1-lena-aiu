@@ -34,7 +34,8 @@
  <!--    <%= render partial: "comments/comment", collection: @post.comments %>  --> 
   
     <%= render @post.comments %>
-  
+	<h2>Add a comment</h2>
+	<%= render partial: "comments/form", locals: {comment: @post.comments.new} %>
 </div>
 <br>
 <%= link_to 'Edit', edit_post_path(@post) %> |
